@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的小网站</title>
+    <title>密码保护页面</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,22 +15,46 @@
             text-align: center;
             color: #333;
         }
-        p {
-            font-size: 18px;
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
         }
-        footer {
-            margin-top: 40px;
-            font-size: 14px;
-            text-align: center;
-            color: #888;
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #content {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>欢迎来到我的小网站</h1>
-    <p>这里是我的文字信息。你可以在这个页面上写任何想记录的内容，比如备忘录、公告、文章等等。</p>
-    <p>这个网站是通过 HTML + GitHub Pages 搭建的，完全免费。</p>
+    <div id="login">
+        <h1>请输入访问密码</h1>
+        <input type="password" id="password" placeholder="输入密码">
+        <button onclick="checkPassword()">提交</button>
+    </div>
 
-    <footer>© 2025 我的名字</footer>
+    <div id="content">
+        <h1>欢迎来到我的小网站</h1>
+        <p>这里是我的文字信息，只有输入正确密码的人才能看到。</p>
+        <p>你可以在这里写任何内容，比如公告、备忘录、文章等。</p>
+        <footer>© 2025 我的名字</footer>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var input = document.getElementById("password").value;
+            var correctPassword = "123321"; // 这里设置密码
+            if (input === correctPassword) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            } else {
+                alert("密码错误，请重试！");
+            }
+        }
+    </script>
 </body>
 </html>
